@@ -1,16 +1,42 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fibonacci Calculator</title>
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
+
+<h2>Fibonacci Calculator</h2>
+
+<form id="fibonacciForm">
+    <label for="number">Enter a number:</label>
+    <input type="number" id="number" name="number" min="0" max="50" required>
+    <button type="submit">Calculate Fibonacci</button>
+</form>
+
+<div id="result"></div>
+
+<script>
+document.getElementById("fibonacciForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const num = parseInt(document.getElementById("number").value);
+    const result = fibonacci(num);
+    document.getElementById("result").innerText = `The ${num}th Fibonacci number is: ${result}`;
+});
+
+function fibonacci(num) {
+    if (num <= 0) return 0; // First Fibonacci number is 0
+    if (num === 1) return 0; // Special case for num = 1
+    let a = 0, b = 1;
+    for (let i = 2; i < num; i++) {
+        let temp = b;
+        b = a + b;
+        a = temp;
+    }
+    return b;
+}
 </script>
 
 </body>
-
 </html>
