@@ -1,42 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fibonacci Calculator</title>
+    <title>Fibonacci</title>
 </head>
 <body>
+    <script>
+        function fibonacci(num) {
+            if (num === 0) {
+                return 0;
+            } else if (num === 1) {
+                return 0;
+            } else if (num === 2) {
+                return 1;
+            } else {
+                let prevPrev = 0;
+                let prev = 1;
+                let result = 0;
+                for (let i = 3; i <= num; i++) {
+                    result = prevPrev + prev;
+                    prevPrev = prev;
+                    prev = result;
+                }
+                return result;
+            }
+        }
 
-<h2>Fibonacci Calculator</h2>
-
-<form id="fibonacciForm">
-    <label for="number">Enter a number:</label>
-    <input type="number" id="number" name="number" min="0" max="50" required>
-    <button type="submit">Calculate Fibonacci</button>
-</form>
-
-<div id="result"></div>
-
-<script>
-document.getElementById("fibonacciForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-    const num = parseInt(document.getElementById("number").value);
-    const result = fibonacci(num);
-    document.getElementById("result").innerText = `The ${num}th Fibonacci number is: ${result}`;
-});
-
-function fibonacci(num) {
-    if (num <= 0) return 0; // First Fibonacci number is 0
-    if (num === 1) return 0; // Special case for num = 1
-    let a = 0, b = 1;
-    for (let i = 2; i < num; i++) {
-        let temp = b;
-        b = a + b;
-        a = temp;
-    }
-    return b;
-}
-</script>
-
+        // Test cases
+        console.log(fibonacci(1)); // Output: 0
+        console.log(fibonacci(5)); // Output: 3
+    </script>
 </body>
 </html>
