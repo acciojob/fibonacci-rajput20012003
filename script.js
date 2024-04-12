@@ -4,7 +4,14 @@ function fibonacci(num) {
     } else if (num === 2) {
         return 1;
     } else {
-        return fibonacci(num - 1) + fibonacci(num - 2);
+        let prev = 0;
+        let current = 1;
+        for (let i = 2; i < num; i++) {
+            let temp = current;
+            current = current + prev;
+            prev = temp;
+        }
+        return current;
     }
 }
 
